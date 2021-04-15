@@ -1,29 +1,31 @@
 <!DOCTYPE html>
 <html>
     <head>
-        {% load static %}
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Trang Chủ</title>
-        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-        <link rel="stylesheet" href="{% static 'css/bootstrap-reboot.min.css' %}">
-        <!-- icon tab chorme -->
-        <link rel="icon" type="image/png" sizes="32x32" href="/media/image/logo/logo.png">
+		<!-- icon tab chorme -->
+        <link rel="icon" type="image/png" sizes="32x32" href="image/logo/logo.png">
+		
+		<!-- css library-->
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/bootstrap-reboot.min.css">       
         <!-- css self-defined-->
-        <link rel="stylesheet" href="{% static 'css/common.css' %}">
-        <link rel="stylesheet" href="{% static 'css/style.css' %}">
-        <link rel="stylesheet" href="{% static 'css/screen_size.css' %}">
+        <link rel="stylesheet" href="css/common.css">
+		<link rel="stylesheet" href="css/base_sub.css">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/screen_size.css">
 
         <!-- javascript library-->
-        <script src="{% static 'js/jquery-3.4.0.min.js' %}"></script>
-        <script src="{% static 'js/jquery.validate.min.js' %}"></script>
-        <script src="{% static 'js/popper.min.js' %}"></script>
-        <script src="{% static 'js/bootstrap.min.js' %}" async defer></script>
+        <script src="js/jquery-3.4.0.min.js"></script>
+        <script src="js/jquery.validate.min.js"></script>
+        <script src="js/popper.min.js"></script>
+        <script src="js/bootstrap.min.js" async defer></script>
         <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
         <!-- javascript self-defined -->
-        <script src="{% static 'js/validate.js' %}"></script>
-        <script src="{% static 'js/style.js' %}"></script>
+        <script src="js/validate.js"></script>
+        <script src="js/style.js"></script>
         
     </head>
     <body>
@@ -33,7 +35,7 @@
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark-des fixed-top">
 				<div class="container-fluid">
 					<a class="navbar-brand" href="\trangchu">
-						<img src="/media/{{logo.image}}" alt="DeveloperVietNam" title="DeveloperVietNam" height="35" width="35" class="mr_5"/>DeveloperVN
+						<img src="image/logo/logo.png" alt="DeveloperVN" title="DeveloperVN" height="35" width="35" class="mr_5"/>DeveloperVN
 					</a>
 					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
 						<span class="navbar-toggler-icon"></span>
@@ -44,26 +46,9 @@
 							<li class="nav-item"  id="home">
 								<a class="nav-link" href="\trangchu">Trang Chủ <span class="sr-only">(current)</span></a>
 							</li>
-							<li class="nav-item dropdown" id="course">
-								<a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Khóa Học</a>
-								<div class="dropdown-menu" aria-labelledby="dropdown07">
-									{% for course in course_list%}
-									<a class="dropdown-item" href="/khoahoc/{{course.course_id}}">{{course.name}}</a>
-									{% endfor %}
-								</div>
-							</li>
-							<li class="nav-item" id="share">
-								<a class="nav-link" href="\chiase">Chia Sẻ</a>
-							</li>
-							<li class="nav-item" id="about">
-								<a class="nav-link" href="\gioithieu">Giới Thiệu</a>
-							</li>
 							<li class="nav-item" id="contact">
 								<a class="nav-link" href="\lienhe">Liên Hệ</a>
-							</li>
-							<li class="nav-item" id="sponsorship">
-								<a class="nav-link" href="\taitro">Tài Trợ</a>
-							</li>                        
+							</li>                       
 						</ul>
 						<form class="form-inline my-2 my-md-0">
 							<a type="button" class="btn btn-sm btn-rs text-while mr_5" href = "\dangky?path={{request.path}}">Đăng Ký</a>
@@ -90,11 +75,15 @@
 					<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
 				</ol>
 				<div class="carousel-inner">
-					{% for banner in banner_list%}
-					<div class="carousel-item" id={{banner.priority}}>
-						<img class="d-block w-100" src="/media/{{banner.image}}" alt="{{banner.name}}">
+					<div class="carousel-item" id="0" class="active">
+						<img class="d-block w-100" src="image/banner/DeveloperVietNam_banner.png" alt="">
 					</div>
-					{% endfor %}
+					<div class="carousel-item" id="1">
+						<img class="d-block w-100" src="image/banner/khoa-hoc-DeveloperVN.png" alt="">
+					</div>
+					<div class="carousel-item" id="2">
+						<img class="d-block w-100" src="image/banner/lap-trinh-ai-co-ban-DeveloperVN.png" alt="">
+					</div>
 				</div>
 				<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
 					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -111,13 +100,110 @@
 		<!-- header end-->
 
         <div class="container-fluid">
-        <!-- article start-->
-        {% block article %}{% endblock %}
-		<!-- article end-->
-
-        <!-- aside start-->
-        {% block aside %}{% endblock %}
-		<!-- aside end-->
+			<!-- article start-->
+			<article>
+				<div class="container-fluid">
+					<div class="row_mr0 mb_10">
+						<div class="title_header">
+							<h2 class="mb-0 bold">Khóa Học</h2>
+						</div>
+					</div>
+				</div>
+				<!-- section start-->
+				<section class="md-section" style="padding:0;">
+					<div class="container-fluid">
+						<div class="textbox-group">
+							<div class="row_mr0">
+									<!-- course start-->
+									<div class="col-md-4 col-lg-4 col-xl-3 mt_t20">
+										<!-- textbox start-->
+										<div class="textbox">
+											<div class="textbox__image" style="background-image: url(image/background/yellow02.jpg)">
+												<div class="flip-box-inner">
+													<a href="/khoahoc/{{course.course_id}}"><img src="image/course/python.png" alt="python"></a>
+												</div>
+												<div class="flip-box-back">
+													<a href="/khoahoc/{{course.course_id}}"><img src="image/course/python.png" alt="python"></a>
+												</div>
+											</div>
+											<div class="textbox__body">
+												<h2 class="textbox__title"><a href="/khoahoc/{{course_list.course_id}}">Python</a></h2>
+												<div class="textbox__description"><p class="bold">Khóa học Python từ cơ bản đến nâng cao</p></div>
+											</div>
+										</div>
+										<!-- textbox end-->						
+									</div>
+									<!-- course end-->
+									
+									<!-- course start-->
+									<div class="col-md-4 col-lg-4 col-xl-3 mt_t20">
+										<!-- textbox start-->
+										<div class="textbox">
+											<div class="textbox__image" style="background-image: url(image/background/yellow02.jpg)">
+												<div class="flip-box-inner">
+													<a href="/khoahoc/{{course.course_id}}"><img src="image/course/python.png" alt="python"></a>
+												</div>
+												<div class="flip-box-back">
+													<a href="/khoahoc/{{course.course_id}}"><img src="image/course/python.png" alt="python"></a>
+												</div>
+											</div>
+											<div class="textbox__body">
+												<h2 class="textbox__title"><a href="/khoahoc/{{course_list.course_id}}">Python</a></h2>
+												<div class="textbox__description"><p class="bold">Khóa học Python từ cơ bản đến nâng cao</p></div>
+											</div>
+										</div>
+										<!-- textbox end-->						
+									</div>
+									<!-- course end-->
+									
+									<!-- course start-->
+									<div class="col-md-4 col-lg-4 col-xl-3 mt_t20">
+										<!-- textbox start-->
+										<div class="textbox">
+											<div class="textbox__image" style="background-image: url(image/background/yellow02.jpg)">
+												<div class="flip-box-inner">
+													<a href="/khoahoc/{{course.course_id}}"><img src="image/course/python.png" alt="python"></a>
+												</div>
+												<div class="flip-box-back">
+													<a href="/khoahoc/{{course.course_id}}"><img src="image/course/python.png" alt="python"></a>
+												</div>
+											</div>
+											<div class="textbox__body">
+												<h2 class="textbox__title"><a href="/khoahoc/{{course_list.course_id}}">Python</a></h2>
+												<div class="textbox__description"><p class="bold">Khóa học Python từ cơ bản đến nâng cao</p></div>
+											</div>
+										</div>
+										<!-- textbox end-->						
+									</div>
+									<!-- course end-->
+									
+									<!-- course start-->
+									<div class="col-md-4 col-lg-4 col-xl-3 mt_t20">
+										<!-- textbox start-->
+										<div class="textbox">
+											<div class="textbox__image" style="background-image: url(image/background/yellow02.jpg)">
+												<div class="flip-box-inner">
+													<a href="/khoahoc/{{course.course_id}}"><img src="image/course/python.png" alt="python"></a>
+												</div>
+												<div class="flip-box-back">
+													<a href="/khoahoc/{{course.course_id}}"><img src="image/course/python.png" alt="python"></a>
+												</div>
+											</div>
+											<div class="textbox__body">
+												<h2 class="textbox__title"><a href="/khoahoc/{{course_list.course_id}}">Python</a></h2>
+												<div class="textbox__description"><p class="bold">Khóa học Python từ cơ bản đến nâng cao</p></div>
+											</div>
+										</div>
+										<!-- textbox end-->						
+									</div>
+									<!-- course end-->
+							</div>
+						</div>
+					</div>
+				</section>
+				<!-- section end-->
+			</article>
+			<!-- article end-->
         </div>
 
         <!-- footer start-->
