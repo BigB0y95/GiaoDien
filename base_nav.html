@@ -1,0 +1,56 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark-des fixed-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="\trangchu">
+            <img src="/media/{{logo.image}}" alt="DeveloperVietNam" title="DeveloperVietNam" height="35" width="35" class="mr_5"/>DeveloperVN
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarsExample07">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item"  id="home">
+                    <a class="nav-link" href="\trangchu">Trang Chủ <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item dropdown" id="course">
+                    <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Khóa Học</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdown07">
+                        {% for course in course_list%}
+                        <a class="dropdown-item" href="/khoahoc/{{course.course_id}}">{{course.name}}</a>
+                        {% endfor %}
+                    </div>
+                </li>
+                <li class="nav-item" id="share">
+                    <a class="nav-link" href="\chiase">Chia Sẻ</a>
+                </li>
+                <li class="nav-item" id="about">
+                    <a class="nav-link" href="\gioithieu">Giới Thiệu</a>
+                </li>
+                <li class="nav-item" id="contact">
+                    <a class="nav-link" href="\lienhe">Liên Hệ</a>
+                </li>
+                <li class="nav-item" id="sponsorship">
+                    <a class="nav-link" href="\taitro">Tài Trợ</a>
+                </li>                        
+            </ul>
+            <form class="form-inline my-2 my-md-0">
+                {% if user.username == '' %}
+                    <a type="button" class="btn btn-sm btn-rs text-while mr_5" href = "\dangky?path={{request.path}}">Đăng Ký</a>
+                    <a type="button" class="btn btn-sm btn-rs text-while" href ="\dangnhap?path={{request.path}}">Đăng Nhập</a>                
+                {% else %}
+                    <div class="btn-group mr_30">
+                        <button class="btn btn-black-des btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ user.username}}
+                        </button>
+                        <div class="dropdown-menu">
+                            <!-- <a class="dropdown-item" href="#"><i class="fa fa-user mr_10"></i>Hồ sơ</a> -->
+                            <a class="dropdown-item" href="\doimatkhau?path={{request.path}}"><i class="fas fa-key mr_10"></i>Đổi mật khẩu</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="\dangxuat?path={{request.path}}"><i class="fas fa-sign-out-alt mr_10"></i>Đăng xuất</a>
+                        </div>
+                    </div>
+                {% endif %}               
+            </form>
+        </div>
+    </div>
+</nav>

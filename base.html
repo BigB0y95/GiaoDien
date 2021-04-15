@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% load static %}
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Trang Chủ</title>
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/bootstrap-reboot.min.css' %}">
+        <!-- icon tab chorme -->
+        <link rel="icon" type="image/png" sizes="32x32" href="/media/image/logo/logo.png">
+        <!-- css self-defined-->
+        <link rel="stylesheet" href="{% static 'css/common.css' %}">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'css/screen_size.css' %}">
+
+        <!-- javascript library-->
+        <script src="{% static 'js/jquery-3.4.0.min.js' %}"></script>
+        <script src="{% static 'js/jquery.validate.min.js' %}"></script>
+        <script src="{% static 'js/popper.min.js' %}"></script>
+        <script src="{% static 'js/bootstrap.min.js' %}" async defer></script>
+        <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+        <!-- javascript self-defined -->
+        <script src="{% static 'js/validate.js' %}"></script>
+        <script src="{% static 'js/style.js' %}"></script>
+        
+    </head>
+    <body>
+        <!-- header -->
+        <header class="header header-transparent">
+            <!-- navbar start-->
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark-des fixed-top">
+				<div class="container-fluid">
+					<a class="navbar-brand" href="\trangchu">
+						<img src="/media/{{logo.image}}" alt="DeveloperVietNam" title="DeveloperVietNam" height="35" width="35" class="mr_5"/>DeveloperVN
+					</a>
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+
+					<div class="collapse navbar-collapse" id="navbarsExample07">
+						<ul class="navbar-nav mr-auto">
+							<li class="nav-item"  id="home">
+								<a class="nav-link" href="\trangchu">Trang Chủ <span class="sr-only">(current)</span></a>
+							</li>
+							<li class="nav-item dropdown" id="course">
+								<a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Khóa Học</a>
+								<div class="dropdown-menu" aria-labelledby="dropdown07">
+									{% for course in course_list%}
+									<a class="dropdown-item" href="/khoahoc/{{course.course_id}}">{{course.name}}</a>
+									{% endfor %}
+								</div>
+							</li>
+							<li class="nav-item" id="share">
+								<a class="nav-link" href="\chiase">Chia Sẻ</a>
+							</li>
+							<li class="nav-item" id="about">
+								<a class="nav-link" href="\gioithieu">Giới Thiệu</a>
+							</li>
+							<li class="nav-item" id="contact">
+								<a class="nav-link" href="\lienhe">Liên Hệ</a>
+							</li>
+							<li class="nav-item" id="sponsorship">
+								<a class="nav-link" href="\taitro">Tài Trợ</a>
+							</li>                        
+						</ul>
+						<form class="form-inline my-2 my-md-0">
+							<a type="button" class="btn btn-sm btn-rs text-while mr_5" href = "\dangky?path={{request.path}}">Đăng Ký</a>
+							<a type="button" class="btn btn-sm btn-rs text-while" href ="\dangnhap?path={{request.path}}">Đăng Nhập</a>                
+							<!-- <div class="btn-group mr_30">
+								<button class="btn btn-black-des btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">QuangPC</button>								
+								<div class="dropdown-menu">
+									<a class="dropdown-item" href="\doimatkhau?path={{request.path}}"><i class="fas fa-key mr_10"></i>Đổi mật khẩu</a>
+									<div class="dropdown-divider"></div>
+									<a class="dropdown-item" href="\dangxuat?path={{request.path}}"><i class="fas fa-sign-out-alt mr_10"></i>Đăng xuất</a>
+								</div>
+							</div> -->
+						</form>
+					</div>
+				</div>
+			</nav>
+			<!-- navbar end-->
+
+            <!-- banner start-->
+            <div id="carouselExampleIndicators" class="carousel slide mb-4 banner" data-ride="carousel">
+				<ol class="carousel-indicators">
+					<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+					<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+					<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+				</ol>
+				<div class="carousel-inner">
+					{% for banner in banner_list%}
+					<div class="carousel-item" id={{banner.priority}}>
+						<img class="d-block w-100" src="/media/{{banner.image}}" alt="{{banner.name}}">
+					</div>
+					{% endfor %}
+				</div>
+				<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					<span class="sr-only">Previous</span>
+				</a>
+				<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+					<span class="carousel-control-next-icon" aria-hidden="true"></span>
+					<span class="sr-only">Next</span>
+				</a>
+			</div>
+			<!-- banner end-->
+
+        </header>
+		<!-- header end-->
+
+        <div class="container-fluid">
+        <!-- article start-->
+        {% block article %}{% endblock %}
+		<!-- article end-->
+
+        <!-- aside start-->
+        {% block aside %}{% endblock %}
+		<!-- aside end-->
+        </div>
+
+        <!-- footer start-->
+        <footer class="bg-cover footer mt_t30">
+            <div class="py-6">
+                <div class="container-fluid">
+                    <!-- Copyright -->
+                    <p class="font-size-xxs text-muted">
+                        © Bản quyền thuộc về <b>Developer Việt Nam</b>. Thiết kế và hoàn thiện bởi <b>Developer Việt Nam</b>.
+                    </p>
+                </div>
+            </div>
+        </footer>
+		<!-- footer end-->
+    </body>
+</html>
